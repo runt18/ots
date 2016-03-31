@@ -19,7 +19,7 @@ def checkChecksum(infile):
     sum += readU32(contents, offset)
     while sum >= 2**32:
       sum -= 2**32
-  print 'Sum of whole file: %x' % sum
+  print 'Sum of whole file: {0:x}'.format(sum)
 
   numTables = readU16(contents, 4)
 
@@ -35,10 +35,10 @@ def checkChecksum(infile):
       while sum >= 2**32:
         sum -= 2**32
     if sum != chksum:
-      print 'Bad chksum: %s' % tag
+      print 'Bad chksum: {0!s}'.format(tag)
 
 if __name__ == '__main__':
   if len(sys.argv) != 2:
-    print 'Usage: %s <ttf filename>' % sys.argv[0]
+    print 'Usage: {0!s} <ttf filename>'.format(sys.argv[0])
   else:
     checkChecksum(file(sys.argv[1], 'r'))
